@@ -1,8 +1,32 @@
 @import "tailwindcss";
 
+/* ─── PulseSight brand tokens ─────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark palette */
+  --navy-deep:   #050A14;
+  --navy-mid:    #0A2533;
+  --navy-text:   #0D2B3E;
+  --navy-teal:   #032d43;
+  --navy-slate:  #1f2a3a;
+
+  /* Coral / accent */
+  --coral:       #ff693b;
+  --coral-alt:   #F26522;
+  --teal-hl:     #007A8C;
+
+  /* Blush / light palette */
+  --blush-100:   #e9d9d2;
+  --blush-200:   #e8cdc2;
+  --blush-300:   #F5C4A7;
+  --blush-warm:  #F2E3D5;
+
+  /* Card surfaces */
+  --card-cream:  #F2F2F2;
+  --card-dark:   #0d2b3e;
+
+  /* Text */
+  --text-light:  #F5E6E0;
+  --text-muted:  #8E9499;
 }
 
 @theme inline {
@@ -10,17 +34,35 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Gradient utilities ──────────────────────────────────────────── */
+.gradient-hero {
+  background: linear-gradient(135deg, #050A14 0%, #101429 35%, #0B212B 70%, #051f3c 100%);
+}
+.gradient-hero-glow {
+  background:
+    radial-gradient(ellipse 55% 70% at 0% 50%, rgba(255, 105, 59, 0.12) 0%, transparent 60%),
+    linear-gradient(135deg, #050A14 0%, #101429 35%, #0B212B 70%, #051f3c 100%);
+}
+.gradient-light {
+  background: linear-gradient(to right, #F2E3D5 0%, #e8cdc2 45%, #F5C4A7 100%);
+}
+.gradient-dark-glow {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 50%, rgba(30, 40, 80, 0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 100% 100%, rgba(0, 60, 80, 0.18) 0%, transparent 50%),
+    linear-gradient(135deg, #050A14 0%, #0d1726 50%, #08141e 100%);
+}
+.gradient-services {
+  background:
+    radial-gradient(ellipse 50% 60% at 90% 85%, rgba(0, 60, 80, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 95% 5%, rgba(80, 20, 60, 0.08) 0%, transparent 45%),
+    #07090f;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Scrollbar ───────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }

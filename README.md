@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PulseSight HR Consulting — Website
 
-## Getting Started
+Bilingual (ES/EN) Next.js marketing site for [PulseSight HR Consulting](mailto:pulsesighthrconsulting@gmail.com).
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **TypeScript**
+- **Tailwind CSS 4**
+- **Lucide React** (icons)
+- **Playfair Display** + **Geist** (Google Fonts via `next/font`)
+
+No backend, no environment variables required for v1.
+
+---
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+app/
+  globals.css        Brand tokens + gradient utilities
+  layout.tsx         Fonts, LanguageProvider, metadata
+  page.tsx           Composes all sections
 
-To learn more about Next.js, take a look at the following resources:
+lib/
+  site-content.ts    All ES + EN copy (edit here to update text)
+  language-context.tsx  Language state + useLanguage() hook
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+components/
+  site-header.tsx    Header with nav, ES/EN toggle, mobile menu
+  hero.tsx           Hero section
+  vision-section.tsx Nuestra Mirada
+  why-us-section.tsx ¿Por qué elegirnos? (4 cards)
+  services-section.tsx ¿Qué ofrecemos? (4 columns)
+  team-section.tsx   Julieta & Oriana
+  contact-section.tsx Closing CTA + mailto
+  site-footer.tsx    Footer
+  pulsesight-logo.tsx Logo lockup (serif + sans + four-dot icon)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Updating content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All copy (Spanish and English) lives in `lib/site-content.ts`. Edit strings there — no need to touch component files.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Adding team photos
+
+Team photos are placeholder initials for now. When photos are available:
+
+1. Add B&W JPG/PNG images to `public/team/julieta.jpg` and `public/team/oriana.jpg`
+2. In `components/team-section.tsx`, replace the initials `<div>` with:
+
+```tsx
+<Image
+  src={`/team/${name.toLowerCase().split(" ")[0]}.jpg`}
+  alt={member.name}
+  fill
+  className="object-cover grayscale rounded-full"
+/>
+```
+
+---
+
+## Deploy to Vercel
+
+1. Push this folder to a GitHub repository
+2. Go to [vercel.com](https://vercel.com) → **Add New Project**
+3. Import the GitHub repo — Vercel auto-detects Next.js
+4. Click **Deploy** — no environment variables needed
+
+Custom domain: add in Vercel → Project → Settings → Domains.
+
+---
+
+## Phase 2: Working contact form
+
+When ready to add email submissions via Resend:
+
+1. `npm install resend react-hook-form @hookform/resolvers zod`
+2. Add `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` to Vercel env vars
+3. Create `app/api/contact/route.ts` (same pattern as BrandKeycaps `app/api/request-quote/route.ts`)
+4. Replace the static mailto CTA in `contact-section.tsx` with a controlled form

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 
 export function TeamSection() {
@@ -8,7 +9,7 @@ export function TeamSection() {
   return (
     <section id="team" className="gradient-light py-24 px-6 md:px-16 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-[#0D2B3E] leading-tight mb-14">
+        <h2 className="text-[clamp(2rem,5vw,3rem)] font-bold text-[#002B45] leading-tight mb-14">
           {t.team.title}
         </h2>
 
@@ -24,52 +25,46 @@ export function TeamSection() {
 
 type Member = {
   name: string;
+  image: string;
   role: string;
   bio: string;
   tags: readonly string[];
 };
 
 function TeamCard({ member }: { member: Member }) {
-  const initials = member.name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
   return (
-    <div className="bg-[#F2F2F2] rounded-3xl p-7 shadow-[0_4px_24px_rgba(0,0,0,0.06)] flex flex-col gap-6">
-      {/* Top row: photo + name */}
-      <div className="flex items-center gap-5">
-        {/* Orange halo + initials placeholder (team photos added by client) */}
-        <div className="relative shrink-0">
-          <div className="w-16 h-16 rounded-full bg-[#ff693b] flex items-center justify-center">
-            <span className="text-white font-bold text-lg tracking-tight">{initials}</span>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-[#0D2B3E] font-bold text-xl leading-tight">{member.name}</h3>
-          <p className="text-[#0A2533]/60 text-sm mt-0.5">{member.role}</p>
-        </div>
+    <article className="bg-[#FFF8F4]/90 rounded-[28px] px-8 pt-10 pb-8 shadow-[0_4px_24px_rgba(0,43,69,0.06)] flex flex-col">
+      <div className="relative mx-auto mb-8 w-52 h-52">
+        {/* Orange circle fills the entire container */}
+        <div className="absolute inset-0 rounded-full bg-[#FF5722]" aria-hidden />
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className="relative z-10 object-contain object-bottom"
+          sizes="208px"
+        />
       </div>
 
-      {/* Bio */}
-      <p className="text-[#0A2533]/70 text-sm leading-relaxed">
+      <h3 className="text-[#002B45] font-bold text-[clamp(1.5rem,3vw,1.875rem)] leading-tight">
+        {member.name}
+      </h3>
+      <p className="text-[#002B45] font-bold text-sm mt-1.5">{member.role}</p>
+
+      <p className="text-[#002B45]/75 text-sm leading-relaxed mt-5 flex-1">
         {member.bio}
       </p>
 
-      {/* Pill tags */}
-      <div className="flex flex-wrap gap-2 mt-auto">
+      <div className="flex flex-wrap gap-2.5 mt-8">
         {member.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1 rounded-full bg-white text-[#0D2B3E] text-[11px] font-bold tracking-wider uppercase border border-[#0D2B3E]/10"
+            className="px-4 py-1.5 rounded-full bg-white text-[#002B45] text-[10px] font-bold tracking-[0.12em] uppercase shadow-[0_1px_4px_rgba(0,43,69,0.06)]"
           >
             {tag}
           </span>
         ))}
       </div>
-    </div>
+    </article>
   );
 }

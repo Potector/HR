@@ -1,5 +1,6 @@
 "use client";
 
+import { PulseSightLogo } from "./pulsesight-logo";
 import { useLanguage } from "@/lib/language-context";
 
 export function Hero() {
@@ -20,29 +21,7 @@ export function Hero() {
       {/* Main content — center-left like the deck cover */}
       <div className="relative flex-1 flex items-center px-6 md:px-16 lg:px-24 pt-24 pb-16">
         <div className="max-w-2xl">
-          {/* Large serif wordmark */}
-          <h1
-            className="text-[clamp(3.5rem,10vw,7rem)] font-serif font-semibold leading-[0.9] tracking-tight text-[#F5E6E0] mb-3"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-          >
-            PulseSight.
-          </h1>
-
-          {/* HR ✣ CONSULTING sub-mark */}
-          <div className="flex items-center gap-2 mb-10">
-            <span className="text-[11px] md:text-[13px] font-bold tracking-[0.3em] uppercase text-[#F5E6E0]/70">
-              HR
-            </span>
-            <svg viewBox="0 0 16 16" fill="currentColor" className="w-2.5 h-2.5 text-[#ff693b]" aria-hidden>
-              <circle cx="4" cy="4" r="2" />
-              <circle cx="12" cy="4" r="2" />
-              <circle cx="4" cy="12" r="2" />
-              <circle cx="12" cy="12" r="2" />
-            </svg>
-            <span className="text-[11px] md:text-[13px] font-bold tracking-[0.3em] uppercase text-[#F5E6E0]/70">
-              CONSULTING
-            </span>
-          </div>
+          <PulseSightLogo variant="light" size="lg" className="mb-10" />
 
           {/* Tagline */}
           <p className="text-[clamp(1.25rem,3.5vw,1.75rem)] text-[#F5E6E0]/90 font-light leading-snug mb-10">

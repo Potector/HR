@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "PulseSight HR Consulting | Where clarity meets culture",
   description:
     "Consultora boutique de talento: reclutamiento con fit cultural, coaching, diagnóstico organizacional y asesoría legal laboral.",
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/favicon.png" },
 };
 
 export default function RootLayout({

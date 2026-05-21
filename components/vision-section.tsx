@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/lib/language-context";
 
 export function VisionSection() {
@@ -22,18 +23,14 @@ export function VisionSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
           {t.vision.pillars.map((pillar) => (
             <div key={pillar.title} className="flex flex-col gap-4">
-              {/* Four-dot icon */}
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="w-5 h-5 text-[#ff693b]/60"
+              <Image
+                src="/brand/bullet.png"
+                alt=""
                 aria-hidden
-              >
-                <circle cx="5"  cy="5"  r="2.5" />
-                <circle cx="15" cy="5"  r="2.5" />
-                <circle cx="5"  cy="15" r="2.5" />
-                <circle cx="15" cy="15" r="2.5" />
-              </svg>
+                width={28}
+                height={28}
+                className="w-7 h-7"
+              />
               <h3 className="text-xl font-bold text-[#0D2B3E]">{pillar.title}</h3>
               <p className="text-[#0A2533]/70 text-sm md:text-base leading-relaxed">
                 {pillar.body}

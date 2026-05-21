@@ -117,12 +117,14 @@ export const content = {
       members: [
         {
           name: "Julieta Cerrotta",
+          image: "/team/julieta-cerrotta.png",
           role: "Fundadora & Consultora Senior",
           bio: "Profesional de RRHH con sólida trayectoria en banca y consumo masivo. Experiencia de 10 años en ICBC Argentina liderando procesos de mejora continua, posiciones comerciales y de Capital Humano. Anteriormente en Softys optimizando procesos y eficiencia operativa. Co fundadora de proyectos propios con foco en propósito y bienestar.",
           tags: ["RRHH & Procesos", "Banca & Negocios", "Reclutamiento"],
         },
         {
           name: "Oriana Novello",
+          image: "/team/oriana-novello.png",
           role: "Fundadora & Directora de Talento",
           bio: "Profesional de RRHH con más de 15 años liderando estrategias de talento y transformación cultural en banca, tecnología y mercados globales. Amplia experiencia dirigiendo equipos de HR. Trayectoria en LATAM, Brasil y EE.UU. Especialista en People Analytics, coaching y liderazgo, OKRs y culturas de alto desempeño.",
           tags: ["Talent Strategy", "Coaching", "Diagnóstico & Cultura"],
@@ -257,12 +259,14 @@ export const content = {
       members: [
         {
           name: "Julieta Cerrotta",
+          image: "/team/julieta-cerrotta.png",
           role: "Founder & Senior Consultant",
           bio: "HR professional with a strong track record in banking and mass consumer goods. 10 years at ICBC Argentina leading continuous improvement processes, commercial and Human Capital roles. Previously at Softys optimizing processes and operational efficiency. Co-founder of purpose-driven projects focused on purpose and wellbeing.",
           tags: ["HR & Processes", "Banking & Business", "Recruitment"],
         },
         {
           name: "Oriana Novello",
+          image: "/team/oriana-novello.png",
           role: "Founder & Talent Director",
           bio: "HR professional with over 15 years leading talent strategies and cultural transformation in banking, technology, and global markets. Extensive experience managing HR teams. Track record across LATAM, Brazil, and the US. Specialist in People Analytics, coaching and leadership, OKRs, and high-performance cultures.",
           tags: ["Talent Strategy", "Coaching", "Diagnosis & Culture"],
